@@ -1,0 +1,38 @@
+/* Typography */
+
+h1, h2, h3, h4, h5, h6 {
+	color: $brand-primary;
+}
+
+.wrapper-navbar {
+	background-color: $brand-primary;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #fff;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+	color: $brand-secondary;
+}
+
+/* Homepage */
+
+#hp_hero {
+	margin-bottom: 25px;
+}
+
+.hp_lesson, #lesson_cat {
+	padding: 25px;
+	border: solid 1px $brand-primary;
+}
+
+/* Footer */
+
+#wrapper-footer {
+	background-color: $brand-secondary;
+}
