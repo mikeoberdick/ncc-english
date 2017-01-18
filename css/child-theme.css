@@ -9445,9 +9445,12 @@ h1, h2, h3, h4, h5, h6 {
 #hp_hero {
   margin-bottom: 25px; }
 
-.hp_lesson, #lesson_cat {
+.hp_lesson, .lesson_cat {
   padding: 25px;
   border: solid 1px #5f0d0d; }
+
+.lesson_cat {
+  height: 250px; }
 
 /* Footer */
 #wrapper-footer {

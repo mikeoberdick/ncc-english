@@ -34,7 +34,7 @@
 		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
     			foreach ( $terms as $term ) {
     				$term_link = get_term_link( $term );
-        			echo '<div class = "col-sm-6 col-lg-4"><div id = "lesson_cat"><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></div></div>';
+        			echo '<div class = "col-sm-6 col-lg-4"><div class = "lesson_cat" style = "background-image: url(' . get_field('lesson_category_image', $term) . '); background-size: cover; background-repeat: no-repeat;"><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></div></div>';
     			}
 			}
 

@@ -26,9 +26,13 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 25px;
 }
 
-.hp_lesson, #lesson_cat {
+.hp_lesson, .lesson_cat {
 	padding: 25px;
 	border: solid 1px $brand-primary;
+}
+
+.lesson_cat {
+	height:250px;
 }
 
 /* Footer */
