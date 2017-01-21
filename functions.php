@@ -63,7 +63,7 @@ function lesson_post_type() {
 	);
 	
 	// Registering your Custom Post Type
-	register_post_type( 'ncc-lessons', $args );
+	register_post_type( 'lessons', $args );
 
 }
 
@@ -72,11 +72,108 @@ add_action( 'init', 'create_lesson_taxonomy' );
 function create_lesson_taxonomy() {
 	register_taxonomy(
 		'lesson-category',
-		'ncc-lessons',
+		'lessons',
 		array(
 			'label' => 'Lesson Category',
 			'rewrite' => array( 'slug' => 'lesson-category' ),
 			'hierarchical' => true,
 		)
 	);
+}
+
+// Add custom taxonomy as a widget
+
+// First we create a function
+function list_terms_custom_taxonomy( $atts ) {
+
+// Inside the function we extract custom taxonomy parameter of our shortcode
+
+	extract( shortcode_atts( array(
+		'custom_taxonomy' => '',
+	), $atts ) );
+
+// arguments for function wp_list_categories
+$args = array( 
+taxonomy => $custom_taxonomy,
+title_li => ''
+);
+
+// We output the HTML
+echo '<h3>Lesson Categories</h3><p>Use the lesson categories below to quickly jump to the archives and find a lesson.</p><ul>';
+echo wp_list_categories($args);
+echo '</ul>';
+}
+
+// Add a shortcode that executes our function
+add_shortcode( 'ct_terms', 'list_terms_custom_taxonomy' );
+
+//Allow Text widgets to execute shortcodes
+add_filter('widget_text', 'do_shortcode');
+
+// Front End Posting Form
+
+/**
+ * Back-end creation of new candidate post
+ * @uses Advanced Custom Fields Pro
+ */
+
+add_filter('acf/pre_save_post' , 'tsm_do_pre_save_post' );
+function tsm_do_pre_save_post( $post_id ) {
+
+	// Bail if not logged in or not able to post
+	if ( ! ( is_user_logged_in() || current_user_can('publish_posts') ) ) {
+		return;
+	}
+
+	// check if this is to be a new post
+	if( $post_id != 'new' ) {
+		return $post_id;
+	}
+
+	// Create a new post
+	$post = array(
+		'post_type'     => 'lessons', // Your post type ( post, page, custom post type )
+		'post_status'   => 'draft', // (publish, draft, private, etc.)
+		'post_title'    => wp_strip_all_tags($_POST['acf']['field_54dfc93e35ec4']), // Post Title ACF field key
+		'post_content'  => $_POST['acf']['field_54dfc94e35ec5'], // Post Content ACF field key
+	);
+
+	// insert the post
+	$post_id = wp_insert_post( $post );
+
+	// Save the fields to the post
+	do_action( 'acf/save_post' , $post_id );
+
+	return $post_id;
+
+}
+
+/**
+ * Save ACF image field to post Featured Image
+ * @uses Advanced Custom Fields Pro
+ */
+add_action( 'acf/save_post', 'tsm_save_image_field_to_featured_image', 10 );
+function tsm_save_image_field_to_featured_image( $post_id ) {
+
+	// Bail if not logged in or not able to post
+	if ( ! ( is_user_logged_in() || current_user_can('publish_posts') ) ) {
+		return;
+	}
+
+	// Bail early if no ACF data
+	if( empty($_POST['acf']) ) {
+		return;
+	}
+
+	// ACF image field key
+	$image = $_POST['acf']['field_54dfcd4278d63'];
+
+	// Bail if image field is empty
+	if ( empty($image) ) {
+		return;
+	}
+
+	// Add the value which is the image ID to the _thumbnail_id meta data for the current post
+	add_post_meta( $post_id, '_thumbnail_id', $image );
+
 }

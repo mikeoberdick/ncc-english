@@ -16,39 +16,41 @@
 
 	<?php endwhile; // end of the loop ?>
 
+<div class = "lessonCategories">
 	<div class = "row">
-	 	
-	 	<div class = "col-sm-12">
-			<h3>Lesson Categories</h3>
+		 	<div class = "col-sm-12">
+				<h3>Lesson Categories</h3>
+			</div>
+
+		<?php
+
+		$terms = get_terms( array( 
+	    	'taxonomy' => 'lesson-category',
+	    	'hide_empty'   => 0
+				) );
+
+
+		
+			if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+	    			foreach ( $terms as $term ) {
+	    				$term_link = get_term_link( $term );
+	        			echo '<div class = "col-sm-6 col-lg-4"><a href="' . esc_url( $term_link ) . '"><div class = "lesson_cat" style = "background-image: url(' . get_field('lesson_category_image', $term) . '); background-size: cover; background-repeat: no-repeat;">' . $term->name . '</div></div></a>';
+	    			}
+				}
+
+				?>
 		</div>
-
-	<?php
-
-	$terms = get_terms( array( 
-    	'taxonomy' => 'lesson-category',
-    	'hide_empty'   => 0
-			) );
-
-
-	
-		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-    			foreach ( $terms as $term ) {
-    				$term_link = get_term_link( $term );
-        			echo '<div class = "col-sm-6 col-lg-4"><div class = "lesson_cat" style = "background-image: url(' . get_field('lesson_category_image', $term) . '); background-size: cover; background-repeat: no-repeat;"><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></div></div>';
-    			}
-			}
-
-			?>
-	</div>
-
+</div>
+<hr>
+<div class = "newLessons">
 	 <div class = "row">
 	 	<div class = "col-sm-12">
-			<h3>New Lessons</h3>
+			<h3>Newest Lessons</h3>
 		</div>
 
             <?php
                 $args = array(
-                'post_type' => 'ncc-lessons',
+                'post_type' => 'lessons',
                 'posts_per_page' => '3',
                 );
                 
@@ -66,3 +68,4 @@
 
             <?php endwhile; ?>
     </div>
+</div>

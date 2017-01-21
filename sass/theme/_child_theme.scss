@@ -1,11 +1,13 @@
-/* Typography */
+/* TYPOGRAPHY */
 
 h1, h2, h3, h4, h5, h6 {
 	color: $brand-primary;
 }
 
-.wrapper-navbar {
-	background-color: $brand-primary;
+/* HEADER*/
+
+.bg-inverse {
+	background-color: $brand-primary !important;
 }
 
 .navbar-nav {
@@ -20,22 +22,87 @@ h1, h2, h3, h4, h5, h6 {
 	color: $brand-secondary;
 }
 
-/* Homepage */
+/************************************************* HOMEPAGE */
 
 #hp_hero {
 	margin-bottom: 25px;
 }
 
-.hp_lesson, .lesson_cat {
-	padding: 25px;
-	border: solid 1px $brand-primary;
+.lessonCategories {
+	h3 {
+		margin-bottom: 25px;
+	}
+
+	a {
+			color: #fff;
+			font-weight: bold;
+			font-size: 24px;
+			text-shadow: 0 0 15px #000;
+			&:hover, &:active {
+				text-decoration: none;
+			}
+
+	.lesson_cat {
+		display: flex;
+  		justify-content: center;
+  		align-items: center;
+		height: 250px;
+		padding: 25px;
+		margin-bottom: 25px;
+		height: 250px;
+		border: solid 3px $brand-secondary;
+		}
+	}
 }
 
-.lesson_cat {
-	height:250px;
+.newLessons {
+	h3 {
+		margin-bottom: 25px;
+	}
+	
+	.hp_lesson {
+		height: 250px;
+		padding: 25px;
+		margin-bottom: 25px;
+		height: 250px;
+		border: solid 3px $brand-secondary;
+	}
 }
 
-/* Footer */
+/************************************************* SUBMIT A LESSON */
+
+.acf-form-submit {
+	input {
+		height: 50px;
+    	background: $brand-primary;
+    	color: #fff;
+    	border: 0;
+    	padding: 15px;
+
+    	&:hover {
+    		background: $brand-secondary;
+    	}
+    }
+    
+}
+
+/************************************************* CONTACT */
+
+.nf-form-content {
+	margin: 0 !important;
+}
+
+.nf-form-content input[type="submit"], .nf-form-content input[type="button"], .nf-form-content button {
+	background: $brand-primary !important;
+	color: #fff !important;
+}
+
+.nf-form-content input[type="submit"]:hover, .nf-form-content input[type="button"]:hover, .nf-form-content button:hover {
+	background: $brand-secondary !important;
+	color: #fff !important;
+}
+
+/* FOOTER */
 
 #wrapper-footer {
 	background-color: $brand-secondary;
