@@ -72,7 +72,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 					// Bail if not logged in or able to post
 						if ( ! ( is_user_logged_in()|| current_user_can('publish_posts') ) ) {
-							echo '<p>You must be a registered author to post.</p>';
+							echo '<p>You must be a registered author to post.  Click <a href = "http://www.ncc.dev/wp-login.php">here</a> to login or register for an account.</p>';
 							return;
 						}
 

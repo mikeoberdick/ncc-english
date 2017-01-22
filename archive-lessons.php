@@ -30,6 +30,7 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 					<header class="page-header">
 						<h1 class="page-title">Lesson Plans</h1>
+						<hr>
 						<?php
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>

@@ -177,3 +177,40 @@ function tsm_save_image_field_to_featured_image( $post_id ) {
 	add_post_meta( $post_id, '_thumbnail_id', $image );
 
 }
+
+//hook when user registers
+add_action( 'user_register', 'ncc_registration_save', 10, 1 );
+
+function ncc_registration_save( $user_id ) {
+
+    // insert meta that user not logged in first time
+    update_user_meta($user_id, 'prefix_first_login', '1');
+
+}
+
+// hook when user logs in
+add_action('wp_login', 'ncc_first_login', 10, 2);
+
+function ncc_first_login($user_login, $user) {
+
+    $user_id = $user->ID;
+    // getting prev. saved meta
+    $first_login = get_user_meta($user_id, 'prefix_first_login', true);
+    // if first time login
+    if( $first_login == '1' ) {
+        // update meta after first login
+        update_user_meta($user_id, 'prefix_first_login', '0');
+        // redirect to given URL
+        wp_redirect( '/submit-a-lesson' );
+        exit;
+    }
+}
+
+// Hide the admin toolbar for subscribers
+add_action('admin_init', 'disable_admin_bar');
+
+function disable_admin_bar() {
+    if (current_user_can('subscriber')) {
+        show_admin_bar(false);
+    }
+}

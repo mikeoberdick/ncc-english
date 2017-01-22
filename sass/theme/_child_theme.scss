@@ -107,3 +107,14 @@ h1, h2, h3, h4, h5, h6 {
 #wrapper-footer {
 	background-color: $brand-secondary;
 }
+
+/* Right Sidebar */
+
+#right-sidebar {
+	background: #eee;
+	padding: 25px;
+
+	.widget {
+		margin-bottom: 50px;
+	}
+}
