@@ -9429,6 +9429,9 @@ aside.widget {
 h1, h2, h3, h4, h5, h6 {
   color: #5f0d0d; }
 
+a {
+  text-decoration: none !important; }
+
 /* HEADER*/
 .bg-inverse {
   background-color: #5f0d0d !important; }
@@ -9486,6 +9489,10 @@ h1, h2, h3, h4, h5, h6 {
   .acf-form-submit input:hover {
     background: #f9b000; }
 
+/************************************************* SUBMIT A LESSON */
+.entry-footer {
+  margin-top: 25px; }
+
 /************************************************* CONTACT */
 .nf-form-content {
   margin: 0 !important; }
@@ -9508,3 +9515,22 @@ h1, h2, h3, h4, h5, h6 {
   padding: 25px; }
   #right-sidebar .widget {
     margin-bottom: 50px; }
+  #right-sidebar #sidebarLogo {
+    margin-bottom: 25px;
+    background: #5f0d0d;
+    padding: 15px;
+    border-radius: 10px; }
+  #right-sidebar #sidebarCategories {
+    padding-left: 0;
+    list-style: none; }
+    #right-sidebar #sidebarCategories li {
+      display: inline-block;
+      background: #5f0d0d;
+      padding: 5px 15px;
+      border-radius: 5px;
+      margin: 0 5px 10px 0; }
+      #right-sidebar #sidebarCategories li:hover {
+        opacity: .75; }
+      #right-sidebar #sidebarCategories li a {
+        color: #fff;
+        text-decoration: none; }

@@ -9,6 +9,13 @@
 $brand-primary:         #5f0d0d;
 $brand-secondary:       #f9b000;
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
 // Basics of a navbar
 $navbar-height:                    60px;
 $navbar-margin-bottom:             0px;

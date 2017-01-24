@@ -4,6 +4,10 @@ h1, h2, h3, h4, h5, h6 {
 	color: $brand-primary;
 }
 
+a {
+	text-decoration: none !important;
+}
+
 /* HEADER*/
 
 .bg-inverse {
@@ -86,6 +90,12 @@ h1, h2, h3, h4, h5, h6 {
     
 }
 
+/************************************************* SUBMIT A LESSON */
+
+.entry-footer {
+	margin-top: 25px;
+}
+
 /************************************************* CONTACT */
 
 .nf-form-content {
@@ -116,5 +126,33 @@ h1, h2, h3, h4, h5, h6 {
 
 	.widget {
 		margin-bottom: 50px;
+	}
+
+	#sidebarLogo {
+		margin-bottom: 25px;
+		background: #5f0d0d;
+    	padding: 15px;
+    	@include border-radius(10px);
+	}
+
+	#sidebarCategories {
+    	padding-left: 0;
+    	list-style: none;
+
+    	li {
+    		display: inline-block;
+    		background: #5f0d0d;
+    		padding: 5px 15px;
+    		@include border-radius(5px);
+    		margin: 0 5px 10px 0;
+    		&:hover {
+    			opacity: .75;
+    		}
+
+    		a {
+    			color: #fff;
+    			text-decoration: none;
+    		}
+    	}
 	}
 }
