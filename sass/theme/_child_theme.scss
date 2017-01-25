@@ -82,6 +82,8 @@ a {
     	color: #fff;
     	border: 0;
     	padding: 15px;
+    	transition: all 1s;
+    	@include shadow;
 
     	&:hover {
     		background: $brand-secondary;
@@ -103,6 +105,7 @@ a {
 }
 
 .nf-form-content input[type="submit"], .nf-form-content input[type="button"], .nf-form-content button {
+	@include shadow;
 	background: $brand-primary !important;
 	color: #fff !important;
 }
@@ -145,8 +148,10 @@ a {
     		padding: 5px 15px;
     		@include border-radius(5px);
     		margin: 0 5px 10px 0;
+    		transition: all 1s;
     		&:hover {
-    			opacity: .75;
+    			opacity: .9;
+    			background: #f9b000;
     		}
 
     		a {

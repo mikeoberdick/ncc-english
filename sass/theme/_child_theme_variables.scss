@@ -9,6 +9,12 @@
 $brand-primary:         #5f0d0d;
 $brand-secondary:       #f9b000;
 
+@mixin shadow {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
+}
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;

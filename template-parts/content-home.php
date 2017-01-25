@@ -41,7 +41,7 @@
 				?>
 		</div>
 </div>
-<hr>
+
 <div class = "newLessons">
 	 <div class = "row">
 	 	<div class = "col-sm-12">

@@ -81,6 +81,20 @@ function create_lesson_taxonomy() {
 	);
 }
 
+//Create the Lesson Tags Taxonomy
+add_action( 'init', 'create_tags_taxonomy' );
+function create_tags_taxonomy() {
+	register_taxonomy(
+		'lesson-tags',
+		'lessons',
+		array(
+			'label' => 'Lesson Tag',
+			'rewrite' => array( 'slug' => 'lesson-tag' ),
+			'hierarchical' => false,
+		)
+	);
+}
+
 // Add custom taxonomy as a widget
 
 // First we create a function
@@ -257,13 +271,15 @@ function ncc_entry_footer() {
 
 // Category Links
 $categories_list = get_the_term_list( $post->ID, 'lesson-category', '<span>', ', ', '</span>' );
-printf( '<div class="cat-links">' . __( 'Posted in %1$s', 'understrap' ) . '</div>', $categories_list );
+if ( ! $categories_list == '0' ) {
+	printf( '<div class="cat-links">' . __( 'Posted in %1$s', 'understrap' ) . '</div>', $categories_list );
+	}
 
-/* translators: used between list items, there is a space after the comma */
-$tags_list = get_the_tag_list( '', __( ', ', 'understrap' ) );
-if ( $tags_list ) {
-	printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'understrap' ) . '</span>', $tags_list );
-}
+// Tag Links
+$tags_list = get_the_term_list( $post->ID, 'lesson-tags', '<span>', ', ', '</span>' );
+if ( ! $tags_list == '0' ) {
+	printf( '<div class="tag-links">' . __( 'Tagged with %1$s', 'understrap' ) . '</div>', $tags_list );
+	}
 
 if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 echo '<span class="comments-link">';
