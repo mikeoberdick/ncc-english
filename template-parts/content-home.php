@@ -62,7 +62,7 @@
               <div class = "col-sm-6 col-lg-4">
               	<div class = "hp_lesson">
 	                <div class = "lessonTitle"><a href = "<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a></div>
-	                <div class = "categoryList"><?php echo get_the_term_list( $post->ID, 'lesson-category', ' ' ); ?></div>
+	                <p><?php the_excerpt(); ?></p>
             	</div>
               </div>
 

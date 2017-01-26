@@ -289,3 +289,24 @@ echo '</span>';
 
 }
 endif;
+
+if ( ! function_exists( 'all_excerpts_get_more_link' ) ) {
+	/**
+	 * Adds a custom read more link to all excerpts, manually or automatically generated
+	 *
+	 * @param string $post_excerpt Posts's excerpt.
+	 *
+	 * @return string
+	 */
+	function all_excerpts_get_more_link( $post_excerpt ) {
+
+		return $post_excerpt . ' [...]<p><a class="btn btn-secondary understrap-read-more-link" href="' . get_permalink( get_the_ID() ) . '">' . __( 'View Lesson',
+		'understrap' ) . '</a></p>';
+	}
+}
+add_filter( 'wp_trim_excerpt', 'all_excerpts_get_more_link' );
+
+function ncc_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'ncc_custom_excerpt_length', 999 );
