@@ -1,7 +1,19 @@
+body {
+	background-color: #eee;
+}
+
 /* TYPOGRAPHY */
 
 h1, h2, h3, h4, h5, h6 {
 	color: $brand-primary;
+}
+
+.header_bg {
+	background: url('/wp-content/themes/understrap-child-master/img/header_bg.png');
+    span {
+    	background-color: #eee;
+    	padding-right: 25px;
+    }
 }
 
 a {

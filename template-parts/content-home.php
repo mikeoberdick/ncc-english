@@ -19,7 +19,7 @@
 <div class = "lessonCategories">
 	<div class = "row">
 		 	<div class = "col-sm-12">
-				<h3>Lesson Categories</h3>
+				<h3 class = "header_bg"><span>Lesson Categories</span></h3>
 			</div>
 
 		<?php
@@ -45,7 +45,7 @@
 <div class = "newLessons">
 	 <div class = "row">
 	 	<div class = "col-sm-12">
-			<h3>Newest Lessons</h3>
+			<h3 class = "header_bg"><span>Newest Lessons</span></h3>
 		</div>
 
             <?php

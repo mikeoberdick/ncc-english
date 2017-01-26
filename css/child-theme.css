@@ -9425,9 +9425,18 @@ aside.widget {
 .gallery-caption {
   display: block; }
 
+body {
+  background-color: #eee; }
+
 /* TYPOGRAPHY */
 h1, h2, h3, h4, h5, h6 {
   color: #5f0d0d; }
+
+.header_bg {
+  background: url("/wp-content/themes/understrap-child-master/img/header_bg.png"); }
+  .header_bg span {
+    background-color: #eee;
+    padding-right: 25px; }
 
 a {
   text-decoration: none !important; }
