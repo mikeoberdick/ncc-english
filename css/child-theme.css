@@ -9433,7 +9433,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #5f0d0d; }
 
 .header_bg {
-  background: url("/wp-content/themes/understrap-child-master/img/header_bg.png"); }
+  background: url("/wp-content/themes/understrap-child-master/img/header_bg.png");
+  margin: 50px 0; }
   .header_bg span {
     background-color: #eee;
     padding-right: 25px; }
@@ -9488,6 +9489,11 @@ a {
   height: 250px;
   border: solid 3px #f9b000; }
 
+.author {
+  text-align: center; }
+  .author .authorName {
+    margin-top: 25px; }
+
 /************************************************* SUBMIT A LESSON */
 .acf-form-submit input {
   height: 50px;
@@ -9502,9 +9508,16 @@ a {
   .acf-form-submit input:hover {
     background: #f9b000; }
 
-/************************************************* SUBMIT A LESSON */
+/************************************************* LESSONS */
+.lesson_download {
+  display: flex;
+  align-items: flex-end; }
+
 .entry-footer {
   margin-top: 25px; }
+
+.post-navigation {
+  margin-top: 50px; }
 
 /************************************************* CONTACT */
 .nf-form-content {
@@ -9523,7 +9536,8 @@ a {
 
 /* FOOTER */
 #wrapper-footer {
-  background-color: #f9b000; }
+  background-color: #f9b000;
+  text-align: center; }
 
 /* Right Sidebar */
 #right-sidebar {

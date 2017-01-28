@@ -24,7 +24,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<footer class="site-footer" id="colophon">
 
 					<div class="site-info">
-						<p>&copy; <?php echo date('Y'); ?> <?php echo bloginfo('name'); ?> <span class="sep"> | </span> Website by <a href = "http://www.designs4theweb.com">Designs 4 The Web</a></p>
+						<div>&copy; <?php echo date('Y'); ?> <?php echo bloginfo('name'); ?> <span class="sep"> | </span> Website by <a href = "http://www.designs4theweb.com">Designs 4 The Web</a></div>
 					</div><!-- .site-info -->
 
 				</footer><!-- #colophon -->

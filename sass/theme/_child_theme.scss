@@ -10,6 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .header_bg {
 	background: url('/wp-content/themes/understrap-child-master/img/header_bg.png');
+	margin: 50px 0;
     span {
     	background-color: #eee;
     	padding-right: 25px;
@@ -85,6 +86,14 @@ a {
 	}
 }
 
+.author {
+	text-align: center;
+
+	.authorName {
+		margin-top: 25px;
+	}
+}
+
 /************************************************* SUBMIT A LESSON */
 
 .acf-form-submit {
@@ -104,10 +113,19 @@ a {
     
 }
 
-/************************************************* SUBMIT A LESSON */
+/************************************************* LESSONS */
+
+.lesson_download {
+	display: flex;
+    align-items: flex-end;
+}
 
 .entry-footer {
 	margin-top: 25px;
+}
+
+.post-navigation {
+	margin-top: 50px;
 }
 
 /************************************************* CONTACT */
@@ -131,6 +149,7 @@ a {
 
 #wrapper-footer {
 	background-color: $brand-secondary;
+	text-align: center;
 }
 
 /* Right Sidebar */

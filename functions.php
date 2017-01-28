@@ -70,16 +70,26 @@ function lesson_post_type() {
 //Create the Lesson Category Taxonomy
 add_action( 'init', 'create_lesson_taxonomy' );
 function create_lesson_taxonomy() {
-	register_taxonomy(
-		'lesson-category',
-		'lessons',
-		array(
-			'label' => 'Lesson Category',
-			'rewrite' => array( 'slug' => 'lesson-category' ),
-			'hierarchical' => false,
-		)
+
+	$labels = array(
+		'add_new_item' => 'Add New Lesson Category',
+		'view_item' => 'View Lesson Category',
+		'edit_item' => 'Edit Lesson Category',
 	);
+
+	$args = array(
+		'label' => 'Lesson Category',
+		'rewrite' => array( 'slug' => 'lesson-category' ),
+		'labels'            => $labels,
+	);
+
+	register_taxonomy( 'lesson-category', array( 'lessons' ), $args );
 }
+
+
+
+
+
 
 //Create the Lesson Tags Taxonomy
 add_action( 'init', 'create_tags_taxonomy' );

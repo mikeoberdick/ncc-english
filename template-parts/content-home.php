@@ -69,3 +69,47 @@
             <?php endwhile; ?>
     </div>
 </div>
+
+<div class = "authors">
+	 <div class = "row">
+	 	<div class = "col-sm-12">
+			<h3 class = "header_bg"><span>Top Contributors</span></h3>
+		</div>
+<?php
+
+$allUsers = get_users('orderby=post_count&order=DESC&number=4');
+$users = array();
+
+// Remove admins from the list
+foreach($allUsers as $currentUser)
+	{
+		if(!in_array( 'admin', $currentUser->roles )) {
+			$users[] = $currentUser;
+		}
+	}
+
+	foreach($users as $user)
+		{
+	?>
+	<div class = "col-md-3">
+<a href="<?php echo get_author_posts_url( $user->ID ); ?>">
+	<div class="author">
+	
+		<div class="authorAvatar">
+			<?php echo get_avatar( $user->user_email, '128' ); ?>
+		</div>
+		
+		<div class="authorInfo">
+			<h2 class="authorName"><?php echo $user->display_name; ?></h2>
+		</div>
+	</div>
+</a>
+</div>
+
+<?php
+	}
+?>
+
+</div>
+</div>
+</div>
