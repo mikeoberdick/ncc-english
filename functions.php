@@ -68,17 +68,18 @@ function lesson_post_type() {
 }
 
 //Create the Lesson Category Taxonomy
-add_action( 'init', 'create_lesson_taxonomy' );
-function create_lesson_taxonomy() {
+add_action( 'init', 'create_lesson_cat_taxonomy' );
+function create_lesson_cat_taxonomy() {
 
 	$labels = array(
 		'add_new_item' => 'Add New Lesson Category',
 		'view_item' => 'View Lesson Category',
 		'edit_item' => 'Edit Lesson Category',
+		'update_item' => 'Update Lesson Category',
 	);
 
 	$args = array(
-		'label' => 'Lesson Category',
+		'label' => 'Lesson Categories',
 		'rewrite' => array( 'slug' => 'lesson-category' ),
 		'labels'            => $labels,
 	);
@@ -86,29 +87,30 @@ function create_lesson_taxonomy() {
 	register_taxonomy( 'lesson-category', array( 'lessons' ), $args );
 }
 
+//Create the Lesson Category Taxonomy
+add_action( 'init', 'create_lesson_tags_taxonomy' );
+function create_lesson_tags_taxonomy() {
 
-
-
-
-
-//Create the Lesson Tags Taxonomy
-add_action( 'init', 'create_tags_taxonomy' );
-function create_tags_taxonomy() {
-	register_taxonomy(
-		'lesson-tags',
-		'lessons',
-		array(
-			'label' => 'Lesson Tag',
-			'rewrite' => array( 'slug' => 'lesson-tag' ),
-			'hierarchical' => false,
-		)
+	$labels = array(
+		'add_new_item' => 'Add New Lesson Tag',
+		'view_item' => 'View Lesson Tag',
+		'edit_item' => 'Edit Lesson Tag',
+		'update_item' => 'Update Lesson Tag',
 	);
+
+	$args = array(
+		'label' => 'Lesson Tags',
+		'rewrite' => array( 'slug' => 'lesson-tag' ),
+		'labels'            => $labels,
+	);
+
+	register_taxonomy( 'lesson-tag', array( 'lessons' ), $args );
 }
 
-// Add custom taxonomy as a widget
+// Add custom lesson category taxonomy as a widget
 
 // First we create a function
-function list_terms_custom_taxonomy( $atts ) {
+function list_cats_custom_taxonomy( $atts ) {
 
 // Inside the function we extract custom taxonomy parameter of our shortcode
 
@@ -129,7 +131,37 @@ echo '</ul>';
 }
 
 // Add a shortcode that executes our function
-add_shortcode( 'ct_terms', 'list_terms_custom_taxonomy' );
+add_shortcode( 'ct_cats', 'list_cats_custom_taxonomy' );
+
+
+
+//Custom lesson tag taxonomy as a widget
+
+// First we create a function
+function list_tags_custom_taxonomy( $atts ) {
+
+// Inside the function we extract custom taxonomy parameter of our shortcode
+
+	extract( shortcode_atts( array(
+		'custom_taxonomy' => '',
+	), $atts ) );
+
+// arguments for function wp_list_categories
+$args = array( 
+taxonomy => $custom_taxonomy,
+title_li => ''
+);
+
+// We output the HTML
+echo '<h3>Lesson Tags</h3><p>Use the lesson tags below to find a lesson.</p><ul id = "sidebarTags">';
+echo wp_list_categories($args);
+echo '</ul>';
+}
+
+// Add a shortcode that executes our function
+add_shortcode( 'ct_tags', 'list_tags_custom_taxonomy' );
+
+
 
 //Allow Text widgets to execute shortcodes
 add_filter('widget_text', 'do_shortcode');

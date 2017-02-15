@@ -113,6 +113,24 @@ a {
     
 }
 
+#restrictedMessage {
+	    border: solid 3px #5f0d0d;
+    	padding: 10px;
+
+    	a {
+    		text-decoration: underline;
+    	}
+}
+
+#acf-field_58a4aa81d66f5, .acf-taxonomy-field {
+	max-width: 300px;
+}
+
+.acf-form .-plus {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 /************************************************* LESSONS */
 
 .lesson_download {
