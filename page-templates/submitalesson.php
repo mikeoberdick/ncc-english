@@ -70,10 +70,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 					<?php
 
-					// Bail if not logged in or able to post
+					// Show login form if not logged in or able to post
 						if ( ! ( is_user_logged_in()|| current_user_can('publish_posts') ) ) {
-							echo '<p id = "restrictedMessage">You must be a registered author to post.  Click <a href = "http://www.ncc.dev/wp-login.php">here</a> to login or register for an account.</p>';
-							return;
+							echo '<h1 class = "mb-4">Whoops...</h1><p id = "restrictedMessage" class = "mb-4">You must be a registered user to post a lesson.  Please login below.';
+							echo wp_login_form ( array( 'echo' => 0 ) );
+					        return;
 						}
 
 						$new_post = array(

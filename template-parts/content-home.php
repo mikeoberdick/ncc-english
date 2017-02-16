@@ -51,7 +51,13 @@
             <?php
                 $args = array(
                 'post_type' => 'lessons',
-                'posts_per_page' => '3',
+                'tax_query' => array(
+                	array(
+                		'taxonomy'  => 'lesson-category',
+				        'field'     => 'slug',
+				        'terms'     => 'assessment', // exclude items media items in the news-cat custom taxonomy
+				        'operator'  => 'NOT IN'),
+                )
                 );
                 
                 $wp_query = new WP_Query( $args );

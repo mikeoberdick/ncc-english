@@ -87,7 +87,7 @@ function create_lesson_cat_taxonomy() {
 	register_taxonomy( 'lesson-category', array( 'lessons' ), $args );
 }
 
-//Create the Lesson Category Taxonomy
+//Create the Lesson Tag Taxonomy
 add_action( 'init', 'create_lesson_tags_taxonomy' );
 function create_lesson_tags_taxonomy() {
 
@@ -318,7 +318,7 @@ if ( ! $categories_list == '0' ) {
 	}
 
 // Tag Links
-$tags_list = get_the_term_list( $post->ID, 'lesson-tags', '<span>', ', ', '</span>' );
+$tags_list = get_the_term_list( $post->ID, 'lesson-tag', '<span>', ', ', '</span>' );
 if ( ! $tags_list == '0' ) {
 	printf( '<div class="tag-links">' . __( 'Tagged with %1$s', 'understrap' ) . '</div>', $tags_list );
 	}

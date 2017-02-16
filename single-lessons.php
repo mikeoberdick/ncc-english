@@ -14,6 +14,13 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 	<div class="<?php echo esc_html( $container ); ?>" id="content" tabindex="-1">
 
+	<?php
+	if ( !is_user_logged_in() && has_term ( 'assessment', 'lesson-category', $post) ) {
+		echo '<h1 class = "mb-4">Whoops...</h1><p id = "restrictedMessage" class = "mb-4">You must be a registered user to view this page.  Please login below.';
+		echo wp_login_form ( array( 'echo' => 0 ) );
+        return;
+} ?>
+
 		<div class="row">
 
 			<!-- Do the left sidebar check -->
