@@ -9532,6 +9532,17 @@ a {
 .post-navigation {
   margin-top: 50px; }
 
+/*ABOUT */
+.staff_email {
+  color: #5f0d0d; }
+  .staff_email i {
+    margin-right: 5px; }
+
+.staff_phone {
+  color: #5f0d0d; }
+  .staff_phone i {
+    margin-right: 5px; }
+
 /************************************************* CONTACT */
 .nf-form-content {
   margin: 0 !important; }
