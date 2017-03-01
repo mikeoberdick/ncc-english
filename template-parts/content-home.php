@@ -99,7 +99,7 @@ foreach($allUsers as $currentUser)
 	?>
 	<div class = "col-md-3">
 <a href="<?php echo get_author_posts_url( $user->ID ); ?>">
-	<div class="author">
+	<div class="hp_author">
 	
 		<div class="authorAvatar">
 			<?php echo get_avatar( $user->user_email, '128' ); ?>

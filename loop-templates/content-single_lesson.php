@@ -14,6 +14,7 @@
 	<header class="entry-header">
 
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<hr>
 
 		<div class="entry-meta">
 
@@ -41,6 +42,10 @@
 	<div class="entry-content">
 
 		<?php the_content(); ?>
+
+		<?php if( get_field('video_url') ): ?>
+				<p>Associated Resource: <a href = "<?php the_field ('video_url'); ?>" target = "_blank">Video</a></p>
+			<?php endif; ?>
 
 		<?php
 		wp_link_pages( array(

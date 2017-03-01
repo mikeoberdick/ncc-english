@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages.
+ * The template for displaying lesson-category pages.
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
@@ -19,6 +19,15 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 	<div class="<?php echo esc_html( $container ); ?>" id="content" tabindex="-1">
 
+						<?php
+
+					// Show login form if not logged in or able to post
+						if ( ! ( is_user_logged_in()|| current_user_can('publish_posts') ) ) {
+							echo '<h1 class = "mb-4">Whoops...</h1><p id = "restrictedMessage" class = "mb-4">You must be a registered user to view this content.  Please login below.';
+							echo wp_login_form ( array( 'echo' => 0 ) );
+					        return;
+						} ?>
+
 		<div class="row">
 
 			<!-- Do the left sidebar check -->
@@ -27,22 +36,14 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 			<main class="site-main" id="main">
 
 			<header class="page-header">
-						<h1 class="page-title">Lesson Plans</h1>
-						<hr>
 						<?php
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>
+						<hr>
 					</header><!-- .page-header -->
 
-			<?php
-
-			// Show login form if not logged in or able to post
-						if ( ! ( is_user_logged_in()|| current_user_can('publish_posts') ) ) {
-							echo '<h1 class = "mb-4">Whoops...</h1><p id = "restrictedMessage" class = "mb-4">You must be a registered user to view this content.  Please login below.';
-							echo wp_login_form ( array( 'echo' => 0 ) );
-					        return;
-						} ?>
-
+			
 				<?php if ( have_posts() ) : ?>
 
 					<?php /* Start the Loop */ ?>

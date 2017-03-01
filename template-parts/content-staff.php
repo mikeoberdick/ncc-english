@@ -5,14 +5,13 @@
 		<header class="entry-header">
 
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<hr>
 
 		</header><!-- .entry-header -->
 
 			<div class="entry-content">
 
 				<?php the_content(); ?>
-
-				<h1 class = "mb-3">Staff Directory</h1>
 
 				<?php
 

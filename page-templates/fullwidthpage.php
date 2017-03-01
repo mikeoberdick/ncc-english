@@ -27,8 +27,8 @@ $container = get_theme_mod( 'understrap_container_type' );
       					get_template_part( 'template-parts/content', 'home' );
     				}
 
-					elseif( is_page( 'about' ) ) {
-					    get_template_part( 'template-parts/content', 'about' );
+					elseif( is_page( 'staff-directory' ) ) {
+					    get_template_part( 'template-parts/content', 'staff' );
 					}
 
 					elseif( is_page( 'contact' ) ) {

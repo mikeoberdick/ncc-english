@@ -273,10 +273,6 @@ function disable_admin_bar() {
 
 //Modified understrap_posted_on template tag
 
-if ( ! function_exists( 'ncc_posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
 function ncc_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
@@ -301,7 +297,26 @@ function ncc_posted_on() {
 	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>';
 
 }
-endif;
+
+function archive_post_byline () {
+	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+	}
+
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() )
+	);
+
+	$posted_on = sprintf(
+		esc_html_x( 'Posted on %s', 'post date', 'understrap' ),
+		'<span>' . $time_string . '</span>'
+	);
+
+	echo '<span class="posted-on">' . $posted_on . '</span>';
+
+}
 
 //Modified understrap_entry_footer template tag
 
@@ -332,6 +347,7 @@ echo '</span>';
 }
 endif;
 
+//Customized excerpts
 if ( ! function_exists( 'all_excerpts_get_more_link' ) ) {
 	/**
 	 * Adds a custom read more link to all excerpts, manually or automatically generated
@@ -346,6 +362,8 @@ if ( ! function_exists( 'all_excerpts_get_more_link' ) ) {
 		'understrap' ) . '</a></p>';
 	}
 }
+
+//Custom excerpt length
 add_filter( 'wp_trim_excerpt', 'all_excerpts_get_more_link' );
 
 function ncc_custom_excerpt_length( $length ) {
