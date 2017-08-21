@@ -55,7 +55,7 @@
                 	array(
                 		'taxonomy'  => 'lesson-category',
 				        'field'     => 'slug',
-				        'terms'     => 'assessment', // exclude items media items in the news-cat custom taxonomy
+				        'terms'     => 'assessment', // exclude assessment items
 				        'operator'  => 'NOT IN'),
                 )
                 );
@@ -65,12 +65,14 @@
                 // The Loop
                 while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
-              <div class = "col-sm-6 col-lg-4">
-              	<div class = "hp_lesson">
-	                <div class = "lessonTitle"><a href = "<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a></div>
-	                <p><?php the_excerpt(); ?></p>
-            	</div>
-              </div>
+            <div class = "homepageLesson col-sm-6 col-lg-4">
+             	<div class = "lessonContainer">
+	              	<div class = "hp_lesson">
+		                <div class = "lessonTitle"><a href = "<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a></div>
+		                <p><?php the_excerpt(); ?></p>
+	            	</div>
+	            </div>
+            </div><!-- .col-sm-6 col-lg-4 -->
 
             <?php endwhile; ?>
     </div>
@@ -83,7 +85,7 @@
 		</div>
 <?php
 
-$allUsers = get_users('orderby=post_count&order=DESC&number=4');
+$allUsers = get_users('orderby=post_count&order=DESC&number=4&exclude=3'); //exclude 'Mike Oberdick'
 $users = array();
 
 // Remove admins from the list

@@ -11,6 +11,8 @@ $the_theme = wp_get_theme();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
+<div id="js-heightControl" style="height: 0;">&nbsp;</div>
+
 <?php get_sidebar( 'footerfull' ); ?>
 
 <div class="wrapper" id="wrapper-footer">
@@ -40,6 +42,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+
+<script>
+jQuery(document).ready(function() {
+	jQuery('#js-heightControl').css('height', jQuery(window).height() - jQuery('html').height() +'px');
+});
+</script>
 
 </body>
 
